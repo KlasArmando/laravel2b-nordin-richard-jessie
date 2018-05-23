@@ -15,7 +15,8 @@ class TheGameMuseumController extends Controller
      */
     public function index()
     {
-
+        $results = TheGameMuseum::all();
+        return view('index', compact('results'));
     }
 
     /**
