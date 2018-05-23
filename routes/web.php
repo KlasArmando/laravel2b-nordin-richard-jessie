@@ -1,3 +1,6 @@
 <?php
 
-Route::get('/TheGameMuseum', 'TheGameMuseumController@index');
+Route::get('/', 'TheGameMuseumController@index');
+Route::get('/login', function (){
+    return view('login');
+});

@@ -26,7 +26,7 @@
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Games</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Console</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Handheld</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Login</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"><a class="w3-button" href="{{'login'}}">Login</a>
     </div>
 </div>
 <br>
