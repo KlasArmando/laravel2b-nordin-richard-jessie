@@ -26,6 +26,7 @@
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Games</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Console</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Handheld</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"><a class="w3-button" href="{{'login'}}">Login</a>
     </div>
 </div>
 <br>
@@ -97,7 +98,23 @@
     </div>
 </a>
 
+<a class="w3-button" href="#">
+    <div class="w3-card-4" style="width:20%">
+        <img src="{{asset('image/91cygXStWYL._SX342_.jpg')}}" >
+        <div class="w3-container w3-center">
+            <p>fifa 18</p>
+        </div>
+    </div>
+</a>
 
+<a class="w3-button" href="#">
+    <div class="w3-card-4" style="width:20%">
+        <img src="{{asset('image/variety-box.png')}}" >
+        <div class="w3-container w3-center">
+            <p>nintendo labo</p>
+        </div>
+    </div>
+</a>
 
 <footer id="myFooter">
     <div class="w3-container w3-theme-l2 w3-padding-32">
@@ -109,7 +126,6 @@
         <p>Made by Nordin, Richard and jessie </p>
     </div>
 </footer>
-
 
 <script>
     var myIndex = 0;
