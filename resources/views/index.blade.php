@@ -26,15 +26,16 @@
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Games</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Console</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Handheld</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"><a class="w3-button" href="{{'login'}}">Login</a>
     </div>
 </div>
 <br>
 <br>
 
 <div class="w3-content w3-section" style="max-width:500px">
-    <img class="mySlides" src="{{ asset('image/the-legend-of-zelda-breath-of-the-wild-review-onvergetelijk-106829.jpg') }}" style="width:100%">
-    <img class="mySlides" src="god-of-war-review-vers-bloed-voor-kratos-129565-1.jpg" style="width:100%">
-    <img class="mySlides" src="H2x1_NSwitch_SuperMarioOdyssey_image1600w.jpg" style="width:100%">
+    <img class="mySlides" src="{{asset('image/the-legend-of-zelda-breath-of-the-wild-review-onvergetelijk-106829.jpg')}}" style="width:100%">
+    <img class="mySlides" src="{{asset('image/god-of-war-review-vers-bloed-voor-kratos-129565-1.jpg')}}" style="width: 100%">
+    <img class="mySlides" src="{{asset('image/H2x1_NSwitch_SuperMarioOdyssey_image1600w.jpg')}}" style="width:100%">
 </div>
 
 <div class="w3-panel w3-red">
@@ -43,7 +44,7 @@
 
 <a class="w3-button" href="#">
     <div class="w3-card-4" style="width:20%">
-        <img src="1473142.jpg" >
+        <img src="{{asset('image/1473142.jpg')}}" >
         <div class="w3-container w3-center">
             <p>Nintendo switch</p>
         </div>
@@ -52,7 +53,7 @@
 
 <a class="w3-button" href="#">
     <div class="w3-card-4" style="width:20%">
-        <img src="8d19ec52dea34f25b1611db2f943ff0f_Medium.png" >
+        <img src="{{asset('image/8d19ec52dea34f25b1611db2f943ff0f_Medium.png')}}" >
         <div class="w3-container w3-center">
             <p>Far cry 5</p>
         </div>
@@ -61,7 +62,7 @@
 
 <a class="w3-button" href="#">
     <div class="w3-card-4" style="width:20%">
-        <img src="9200000059380926.jpg" >
+        <img src="{{asset('image/9200000059380926.jpg')}}" >
         <div class="w3-container w3-center">
             <p>God of war</p>
         </div>
@@ -70,7 +71,7 @@
 
 <a class="w3-button" href="#">
     <div class="w3-card-4" style="width:20%">
-        <img src="9200000088311623.jpg" >
+        <img src="{{asset('image/9200000088311623.jpg')}}" >
         <div class="w3-container w3-center">
             <p>donkey kong country tropical freeze</p>
         </div>
@@ -81,7 +82,7 @@
 
 <a class="w3-button" href="#">
     <div class="w3-card-4" style="width:20%">
-        <img src="ps4-pro-of-xbox-one-kopen-alle-voor-en-nadelen-op-een-rijtje-126389.jpg" >
+        <img src="{{asset('image/ps4-pro-of-xbox-one-kopen-alle-voor-en-nadelen-op-een-rijtje-126389.jpg')}}" >
         <div class="w3-container w3-center">
             <p>ps4</p>
         </div>
@@ -90,14 +91,30 @@
 
 <a class="w3-button" href="#">
     <div class="w3-card-4" style="width:20%">
-        <img src="9200000073684225.jpg" >
+        <img src="{{asset('image/9200000073684225.jpg')}}" >
         <div class="w3-container w3-center">
             <p>mario kart 8 deluxe</p>
         </div>
     </div>
 </a>
 
+<a class="w3-button" href="#">
+    <div class="w3-card-4" style="width:20%">
+        <img src="{{asset('image/91cygXStWYL._SX342_.jpg')}}" >
+        <div class="w3-container w3-center">
+            <p>fifa 18</p>
+        </div>
+    </div>
+</a>
 
+<a class="w3-button" href="#">
+    <div class="w3-card-4" style="width:20%">
+        <img src="{{asset('image/variety-box.png')}}" >
+        <div class="w3-container w3-center">
+            <p>nintendo labo</p>
+        </div>
+    </div>
+</a>
 
 <footer id="myFooter">
     <div class="w3-container w3-theme-l2 w3-padding-32">
@@ -109,7 +126,6 @@
         <p>Made by Nordin, Richard and jessie </p>
     </div>
 </footer>
-
 
 <script>
     var myIndex = 0;
