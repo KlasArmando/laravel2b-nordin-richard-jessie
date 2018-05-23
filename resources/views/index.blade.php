@@ -32,7 +32,7 @@
 <br>
 
 <div class="w3-content w3-section" style="max-width:500px">
-    <img class="mySlides" src="the-legend-of-zelda-breath-of-the-wild-review-onvergetelijk-106829.jpg" style="width:100%">
+    <img class="mySlides" src="{{ asset('image/the-legend-of-zelda-breath-of-the-wild-review-onvergetelijk-106829.jpg') }}" style="width:100%">
     <img class="mySlides" src="god-of-war-review-vers-bloed-voor-kratos-129565-1.jpg" style="width:100%">
     <img class="mySlides" src="H2x1_NSwitch_SuperMarioOdyssey_image1600w.jpg" style="width:100%">
 </div>
