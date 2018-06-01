@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel</title>
+
     <style>
         * {box-sizing: border-box;}
-
         body {
             margin: 0;
             font-family: Arial;
         }
-
         .header {
             overflow: hidden;
             background-color: #f45c42;
             padding: 20px 10px;
         }
-
         .header a {
             float: left;
             color: black;
@@ -26,26 +28,21 @@
             line-height: 25px;
             border-radius: 4px;
         }
-
         .header a.logo {
             font-size: 25px;
             font-weight: bold;
         }
-
         .header a:hover {
             background-color: #ddd;
             color: black;
         }
-
         .header a.active {
             background-color: dodgerblue;
             color: white;
         }
-
         .header-right {
             float: Left;
         }
-
         @media screen and (max-width: 500px) {
             .header a {
                 float: none;
@@ -56,19 +53,16 @@
                 float: none;
             }
         }
-
         * {box-sizing: border-box}
         body {font-family: Verdana, sans-serif; margin:0}
         .mySlides {display: none}
         img {vertical-align: middle;}
-
         /* Slideshow container */
         .slideshow-container {
             max-width: 1000px;
             position: relative;
             margin: auto;
         }
-
         /* Next & previous buttons */
         .prev, .next {
             cursor: pointer;
@@ -83,18 +77,15 @@
             transition: 0.6s ease;
             border-radius: 0 3px 3px 0;
         }
-
         /* Position the "next button" to the right */
         .next {
             right: 0;
             border-radius: 3px 0 0 3px;
         }
-
         /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
             background-color: rgba(0,0,0,0.8);
         }
-
         /* Caption text */
         .text {
             color: #f2f2f2;
@@ -105,7 +96,6 @@
             width: 100%;
             text-align: center;
         }
-
         /* Number text (1/3 etc) */
         .numbertext {
             color: #f2f2f2;
@@ -114,7 +104,6 @@
             position: absolute;
             top: 0;
         }
-
         /* The dots/bullets/indicators */
         .dot {
             cursor: pointer;
@@ -126,11 +115,9 @@
             display: inline-block;
             transition: background-color 0.6s ease;
         }
-
         .active, .dot:hover {
             background-color: #717171;
         }
-
         /* Fading animation */
         .fade {
             -webkit-animation-name: fade;
@@ -138,22 +125,18 @@
             animation-name: fade;
             animation-duration: 1.5s;
         }
-
         @-webkit-keyframes fade {
             from {opacity: .4}
             to {opacity: 1}
         }
-
         @keyframes fade {
             from {opacity: .4}
             to {opacity: 1}
         }
-
         /* On smaller screens, decrease text size */
         @media only screen and (max-width: 300px) {
             .prev, .next,.text {font-size: 11px}
         }
-
         .footer {
             position: fixed;
             left: 0;
@@ -174,7 +157,6 @@
             text-decoration: none;
             font-weight: normal;
         }
-
         .card {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -182,15 +164,12 @@
             margin: 50px;
             margin-left: 260px;
         }
-
         .card:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container {
             padding: 2px 16px;
         }
-
         .card2 {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -199,15 +178,12 @@
             margin-left: 520px;
             margin-top: -380px;
         }
-
         .card2:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container2 {
             padding: 2px 16px;
         }
-
         .card3 {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -216,15 +192,12 @@
             margin-left: 770px;
             margin-top: -380px;
         }
-
         .card3:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container3 {
             padding: 2px 16px;
         }
-
         .card4 {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -233,15 +206,12 @@
             margin-left: 1030px;
             margin-top: -380px;
         }
-
         .card4:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container4 {
             padding: 2px 16px;
         }
-
         .card5 {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -250,15 +220,12 @@
             margin-left: 260px;
             margin-top: 0px;
         }
-
         .card5:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container5 {
             padding: 2px 16px;
         }
-
         .card6 {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -267,15 +234,12 @@
             margin-left: 520px;
             margin-top: -380px;
         }
-
         .card6:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container6 {
             padding: 2px 16px;
         }
-
         .card7 {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -284,15 +248,12 @@
             margin-left: 770px;
             margin-top: -380px;
         }
-
         .card7:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container7 {
             padding: 2px 16px;
         }
-
         .card8 {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -301,11 +262,9 @@
             margin-left: 1030px;
             margin-top: -380px;
         }
-
         .card8:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
         .container8 {
             padding: 2px 16px;
         }
@@ -320,27 +279,50 @@
         <a href="#">Consoles</a>
         <a href="#">Games</a>
         <a href="#">Handheld</a>
-    </div>
+<div class="flex-center position-ref full-height">
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                </div>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
+            @endauth
+        </div>
+    @endif
 </div>
 
+    </div>
+</div>
 <div class="slideshow-container">
 
     <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
         <img src="{{asset('image/the-legend-of-zelda-breath-of-the-wild-review-onvergetelijk-106829.jpg')}}" style="width:100%">
-        <div class="text">Caption Text</div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
         <img src="{{asset('image/god-of-war-review-vers-bloed-voor-kratos-129565-1.jpg')}}" style="width:100%">
-        <div class="text">Caption Two</div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">3 / 3</div>
-        <img src="{{asset('image/H2x1_NSwitch_SuperMarioOdyssey_image1600w.jpg')}}" style="width:100%">
-        <div class="text">Caption Three</div>
+        <img src="{{asset('image/index.jpg')}}" style="width:100%">
     </div>
 
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -431,7 +413,7 @@
 
 <a href="#">
     <div class="card8">
-        <img src="{{asset('image/variety-box.png')}}" style="width:100%">
+        <img src="{{asset('image/product-variety.png')}}" style="width:100%">
         <div class="container8">
             <h4><b>Nintendo labo</b></h4>
             <p>€80</p>
@@ -448,7 +430,6 @@
 <script>
     var myIndex = 0;
     carousel();
-
     function carousel() {
         var i;
         var x = document.getElementsByClassName("mySlides");
