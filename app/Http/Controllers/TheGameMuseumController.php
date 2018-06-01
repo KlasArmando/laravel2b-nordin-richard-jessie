@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\TheGameMuseum;
-use App\User;
 use Illuminate\Http\Request;
 
 class TheGameMuseumController extends Controller
@@ -15,8 +14,7 @@ class TheGameMuseumController extends Controller
      */
     public function index()
     {
-        $results = TheGameMuseum::all();
-        return view('index', compact('results'));
+        return view('index');
     }
 
     /**
