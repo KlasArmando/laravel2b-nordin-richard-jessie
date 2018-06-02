@@ -276,10 +276,13 @@
     <a href="#" class="logo">CompanyLogo</a>
     <div class="header-right">
         <a class="active" href="#">Home</a>
-        <a href="#">Consoles</a>
+        <a href="{{url('console')}}">Consoles</a>
         <a href="#">Games</a>
         <a href="#">Handheld</a>
-<div class="flex-center position-ref full-height">
+        @if(Auth::user()['role_id'] == 2)
+            <a href="#">Admin panel</a>
+            @endif
+        <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -304,6 +307,7 @@
             @endauth
         </div>
     @endif
+
 </div>
 
     </div>
