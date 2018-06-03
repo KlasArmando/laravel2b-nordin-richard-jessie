@@ -31,19 +31,6 @@
             <th>
                 {{$item->author}}
             </th>
-            <th>
-                <form action="{{ route('books.edit', $item->id)}}">
-
-                    <input value="Edit" type="submit" class="btn btn-dark">
-                </form>
-
-
-            </th>
-            <th>
-                <form action="{{url('books.delete' . $boek->id)}}">
-                    <input value="Delete" type="submit" class="btn btn-dark">
-                </form>
-            </th>
 
         </tr>
     @endforeach
