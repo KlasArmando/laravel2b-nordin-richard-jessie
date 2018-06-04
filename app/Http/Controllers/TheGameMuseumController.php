@@ -17,6 +17,11 @@ class TheGameMuseumController extends Controller
         return view('index');
     }
 
+    public function console()
+    {
+        return view('console');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
