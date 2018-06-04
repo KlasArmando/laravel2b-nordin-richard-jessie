@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\View\View;
+use SebastianBergmann\Environment\Console;
 
 class ConsoleController extends Controller
 {
@@ -19,6 +20,12 @@ class ConsoleController extends Controller
     {
         $results = consoles::all();
         return view('console.console', compact('results'));
+    }
+
+    public function cart($consoles)
+    {
+        $Consoles = consoles::where('id', $consoles)->first();
+        return redirect('console');
     }
 
     /**

@@ -280,7 +280,6 @@
         <a href="#">Games</a>
         <a href="#">Handheld</a>
         @if(Auth::user()['role_id'] == 2)
-            <a href="#">Admin panel</a>
             @endif
         <div class="flex-center position-ref full-height">
     @if (Route::has('login'))

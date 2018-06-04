@@ -23,6 +23,7 @@ Route::get('/index', 'TheGameMuseumController@index');
 
 
 Route::get('/console', 'ConsoleController@index');
+Route::get('/console/cart/{consoles}', 'ConsoleController@cart');
 Route::get('/console/create', 'ConsoleController@create');
 Route::post('/console/store', 'ConsoleController@store');
 Route::get('/console/{consoles}', 'ConsoleController@show');
