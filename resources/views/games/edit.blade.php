@@ -15,29 +15,27 @@
     </script>
 </head>
 <body>
-
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"> creating data</div>
+                <div class="panel-heading"> update data</div>
 
-                <form method="POST" action="{{url('console/store/')}}">
+                <form method="POST" action="{{url('games/update/' . $game->id)}}">
                     naam: <br>
-                    <input type="text" name="naam" required>*required<br>
+                    <input type="text" name="naam" value="{{$game->name}}" required>*required<br>
                     releasedate: <br>
-                    <input type="text" name="releasedate" id="datepicker" required>*required<br>
+                    <input type="text" name="releasedate" id="datepicker" value="{{$game->releasedate}}" required>*required<br>
                     company: <br>
-                    <input type="text" name="company" required>*required<br>
+                    <input type="text" name="company" value="{{$game->company}}" required>*required<br>
                     price: <br>
-                    <input type="number" name="price" min="0" value="0" step=".01" required>*required<br>
+                    <input type="number" name="price" min="0" value="{{$game->price}}" step=".01" required>*required<br>
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                    <input type="submit" name="create" value="create">
+                    <input type="submit" name="edit" value="edit">
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

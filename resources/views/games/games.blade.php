@@ -5,7 +5,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <style>
         table {
             font-family: arial, sans-serif;
@@ -129,7 +128,7 @@
     <div class="header-right">
         <a class="active" href="{{url('index')}}">Home</a>
         <a href="{{url('console')}}">Consoles</a>
-        <a href="{{url('games')}}">Games</a>
+        <a href="#">Games</a>
         <a href="#">Handheld</a>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
@@ -160,73 +159,49 @@
     </div>
 </div>
 @if(Auth::user()['role_id'] == 2)
-    <form action="{{url('console/create')}}" method="GET">
+    <form action="{{url('games/create')}}" method="GET">
         <input type="submit" value="create">
     </form>
 @endif
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Consoles..">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Games..">
 <table id="myTable">
     <tr class="header">
-        <th>console</th>
+        <th>Game</th>
         <th>release date</th>
         <th>company</th>
         <th>price</th>
     </tr>
-    @foreach($results as $result)
+    @foreach($game as $games)
         <tr>
             <td>
-                {{$result->naam}}
+                {{$games->naam}}
             </td>
             <td>
-                {{$result->releasedate}}
+                {{$games->releasedate}}
             </td>
             <td>
-                {{$result->company}}
+                {{$games->company}}
             </td>
             <td>
-                $ {{$result->price}}
+                $ {{$games->price}}
             </td>
             @if(Auth::user()['role_id'] == 2)
                 <td>
-                    <form action="{{url('console/edit', $result->id)}}" method="GET">
+                    <form action="{{url('games/edit', $games->id)}}" method="GET">
                         <input type="submit" value="edit">
                     </form>
                 </td>
                 <td>
-                    <form action="{{url('/console/' . $result->id)}}" method="POST">
+                    <form action="{{url('/games/' . $games->id)}}" method="POST">
                         {{ csrf_field() }}
                         @method('DELETE')
                         <input type="submit" value="delete">
                     </form>
                 </td>
             @endif
-            <td>
-                <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-                    <!-- Identify your business so that you can collect the payments. -->
-                    <input type="hidden" name="business" value="nordin-van-der-leije@live.nl">
-
-                    <!-- Specify a PayPal Shopping Cart Add to Cart button. -->
-                    <input type="hidden" name="cmd" value="_cart">
-                    <input type="hidden" name="add" value="1">
-
-                    <!-- Specify details about the item that buyers will purchase. -->
-                    <input type="hidden" name="item_name" value="{{$result->naam}}">
-                    <input type="hidden" name="amount" value="{{$result->price}}">
-                    <input type="hidden" name="currency_code" value="USD">
-
-                    <!-- Display the payment button. -->
-                    <input type="image" name="submit"
-                           src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif"
-                           alt="Add to Cart">
-                    <img alt="" width="1" height="1"
-                         src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
-                </form>
-            </td>
         </tr>
-    @endforeach
+        @endforeach
 </table>
-</form>
 <br>
 <div class="footer">
     <a href="{{url('contact')}}">Contact</a>
