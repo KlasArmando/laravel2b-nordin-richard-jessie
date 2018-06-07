@@ -22,6 +22,11 @@ class TheGameMuseumController extends Controller
         return view('console');
     }
 
+    public function contact()
+    {
+        return view('contact');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -277,7 +277,7 @@
     <div class="header-right">
         <a class="active" href="#">Home</a>
         <a href="{{url('console')}}">Consoles</a>
-        <a href="#">Games</a>
+        <a href="{{url('games')}}">Games</a>
         <a href="#">Handheld</a>
         @if(Auth::user()['role_id'] == 2)
             @endif
@@ -416,7 +416,7 @@
 
 <a href="#">
     <div class="card8">
-        <img src="{{asset('image/product-variety.png')}}" style="width:100%">
+        <img src="{{asset('image/variety-box.png')}}" style="width:100%">
         <div class="container8">
             <h4><b>Nintendo labo</b></h4>
             <p>€80</p>
@@ -425,7 +425,7 @@
 </a>
 
 <div class="footer">
-    <a href="#">Contact</a>
+    <a href="{{url('contact')}}">Contact</a>
     &nbsp
     <a href="#">Help</a>
 </div>

@@ -22,9 +22,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading"> creating data</div>
 
-                <form method="POST" action="{{url('console/store/')}}">
+                <form method="POST" action="{{url('games/store/')}}">
                     naam: <br>
-                    <input type="text" name="naam" required>*required<br>
+                    <input type="text" name="name" required>*required<br>
                     releasedate: <br>
                     <input type="text" name="releasedate" id="datepicker" required>*required<br>
                     company: <br>

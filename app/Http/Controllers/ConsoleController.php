@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\consoles;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-use Illuminate\View\View;
-use SebastianBergmann\Environment\Console;
+use App\consoles;
 
 class ConsoleController extends Controller
 {
@@ -20,12 +17,6 @@ class ConsoleController extends Controller
     {
         $results = consoles::all();
         return view('console.console', compact('results'));
-    }
-
-    public function cart($consoles)
-    {
-        $Consoles = consoles::where('id', $consoles)->first();
-        return redirect('console');
     }
 
     /**
@@ -44,17 +35,24 @@ class ConsoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request  $request)
     {
-        $consoles = new consoles();
-        $consoles->naam = input::get('naam');
-        $consoles->releasedate = input::get('releasedate');
-        $consoles->company = input::get('company');
-        $consoles->price = input::get('price');
-        $consoles->created_at = null;
-        $consoles->updated_at = null;
-        $consoles->save();
-        return redirect('console');
+        try{
+            $consoles = new consoles();
+            $consoles->naam = input::get('naam');
+            $consoles->releasedate = input::get('releasedate');
+            $consoles->company = input::get('company');
+            $consoles->price = input::get('price');
+            $consoles->created_at = null;
+            $consoles->updated_at = null;
+            $consoles->save();
+
+        }catch (\Exception $e)
+        {
+            return ('This product already exist. Go back to the previous page');
+        }
+
+        return redirect('consoles');
     }
 
     /**
