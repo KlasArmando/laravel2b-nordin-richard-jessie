@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\games;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-use Illuminate\View\View;
-use SebastianBergmann\Environment\Console;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class GameController extends Controller
 {
@@ -25,18 +22,22 @@ class GameController extends Controller
 
     public function store(Request $request)
     {
-        try{
-        $game = new games();
-        $game->name = input::get('name');
-        $game->releasedate = input::get('releasedate');
-        $game->company = input::get('company');
-        $game->price = input::get('price');
-        $game->created_at = null;
-        $game->updated_at = null;
-        $game->save();
+        try
+        {
+            $game = new games();
+            $game->naam = input::get('naam');
+            $game->releasedate = input::get('releasedate');
+            $game->company = input::get('company');
+            $game->price = input::get('price');
+            $game->created_at = null;
+            $game->updated_at = null;
+            $game->save();
         }catch (\Exception $e)
         {
-            return ('This product already exist. Go back to the previous page');
+            return Redirect::to('console/create')
+                ->withInput()
+                ->with('message', 'You tried to insert a duplicated item, please try again');
+
         }
 
         return redirect('games');
@@ -56,7 +57,7 @@ class GameController extends Controller
     public function update($games, Request $request)
     {
         $game = games::find($games);
-        $game->name = $request->name;
+        $game->naam = $request->naam;
         $game->releasedate = $request->releasedate;
         $game->company = $request->company;
         $game->price = $request->price;

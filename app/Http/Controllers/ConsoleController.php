@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\consoles;
+use function Sodium\compare;
 
 class ConsoleController extends Controller
 {
@@ -37,7 +39,8 @@ class ConsoleController extends Controller
      */
     public function store(Request  $request)
     {
-        try{
+        try
+        {
             $consoles = new consoles();
             $consoles->naam = input::get('naam');
             $consoles->releasedate = input::get('releasedate');
@@ -46,13 +49,15 @@ class ConsoleController extends Controller
             $consoles->created_at = null;
             $consoles->updated_at = null;
             $consoles->save();
-
         }catch (\Exception $e)
         {
-            return ('This product already exist. Go back to the previous page');
+            return Redirect::to('console/create')
+                ->withInput()
+                ->with('message', 'You tried to insert a duplicated item, please try again');
+
         }
 
-        return redirect('consoles');
+        return redirect('console');
     }
 
     /**

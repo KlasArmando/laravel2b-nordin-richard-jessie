@@ -15,16 +15,17 @@
     </script>
 </head>
 <body>
-
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading"> creating data</div>
-
+                @if ($message = \Session('message'))
+                    {{$message}}
+                @endif
                 <form method="POST" action="{{url('games/store/')}}">
                     naam: <br>
-                    <input type="text" name="name" required>*required<br>
+                    <input type="text" name="naam" required>*required<br>
                     releasedate: <br>
                     <input type="text" name="releasedate" id="datepicker" required>*required<br>
                     company: <br>
@@ -38,6 +39,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
