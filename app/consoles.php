@@ -9,5 +9,5 @@ class consoles extends model
     protected $fillable = [
         'naam', 'releasedate', 'company', 'price'
     ];
-
+    protected $table = 'consoles';
 }
