@@ -152,7 +152,7 @@ class Blueprint
     /**
      * Add the commands that are implied by the blueprint's state.
      *
-     * @param  \Illuminate\Database\Grammar  $grammar
+     * @param  \Illuminate\Database\Grammar  $grammer
      * @return void
      */
     protected function addImpliedCommands(Grammar $grammar)
@@ -203,8 +203,8 @@ class Blueprint
     /**
      * Add the fluent commands specified on any columns.
      *
-     * @param  \Illuminate\Database\Grammar  $grammar
-     * @return void
+     * @param  \Illuminate\Database\Grammar  $grammer
+     * @param
      */
     public function addFluentCommands(Grammar $grammar)
     {
@@ -355,18 +355,6 @@ class Blueprint
     public function dropForeign($index)
     {
         return $this->dropIndexCommand('dropForeign', 'foreign', $index);
-    }
-
-    /**
-     * Indicate that the given indexes should be renamed.
-     *
-     * @param  string  $from
-     * @param  string  $to
-     * @return \Illuminate\Support\Fluent
-     */
-    public function renameIndex($from, $to)
-    {
-        return $this->addCommand('renameIndex', compact('from', 'to'));
     }
 
     /**

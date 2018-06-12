@@ -19,13 +19,24 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'TheGameMuseumController@index');
+Route::get('/index', 'TheGameMuseumController@index');
+Route::get('/contact', 'TheGameMuseumController@contact');
+Route::get('/help', 'TheGameMuseumController@help');
 
+Route::get('/console', 'ConsoleController@index');
+Route::get('/console/create', 'ConsoleController@create');
+Route::post('/console/store', 'ConsoleController@store');
+Route::get('/console/{consoles}', 'ConsoleController@show');
+Route::get('/console/edit/{consoles}', 'ConsoleController@edit');
+Route::delete('/console/{consoles}', 'ConsoleController@destroy');
+Route::post('/console/update/{consoles}', 'ConsoleController@update');
 
-/*Handheld*/
-Route::get('/handhelds','HandheldsController@index');
-Route::get('/handhelds/create','HandheldsController@create');
-Route::post('/handhelds','HandheldsController@store');
-Route::get('/handhelds/{handhelds}','HandheldsController@show');
-Route::get('/handhelds/{handhelds}/edit','HandheldsController@edit');
-Route::patch('/handhelds/{handhelds}','HandheldsController@update');
-Route::delete('/handhelds/{handhelds}','HandheldsController@destroy')->name('handhelds.delete');
+Route::get('/games', 'GameController@index');
+Route::get('/games/create', 'GameController@create');
+Route::post('/games/store', 'GameController@store');
+Route::get('/games/{games}', 'GameController@show');
+Route::get('/games/edit/{games}', 'GameController@edit');
+Route::delete('/games/{games}', 'GameController@destroy');
+Route::post('/games/update/{games}', 'GameController@update');
+
+Route::get('/handheld', 'HandheldController@index');
