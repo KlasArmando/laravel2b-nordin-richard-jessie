@@ -1,13 +1,28 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
+    <link rel="stylesheet" type="text/scss" href="/public/css/test.scss">
 
     <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
         * {box-sizing: border-box;}
         body {
             margin: 0;
@@ -157,123 +172,12 @@
             text-decoration: none;
             font-weight: normal;
         }
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 260px;
-        }
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container {
-            padding: 2px 16px;
-        }
-        .card2 {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 520px;
-            margin-top: -380px;
-        }
-        .card2:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container2 {
-            padding: 2px 16px;
-        }
-        .card3 {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 770px;
-            margin-top: -380px;
-        }
-        .card3:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container3 {
-            padding: 2px 16px;
-        }
-        .card4 {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 1030px;
-            margin-top: -380px;
-        }
-        .card4:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container4 {
-            padding: 2px 16px;
-        }
-        .card5 {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 260px;
-            margin-top: 0px;
-        }
-        .card5:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container5 {
-            padding: 2px 16px;
-        }
-        .card6 {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 520px;
-            margin-top: -380px;
-        }
-        .card6:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container6 {
-            padding: 2px 16px;
-        }
-        .card7 {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 770px;
-            margin-top: -380px;
-        }
-        .card7:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container7 {
-            padding: 2px 16px;
-        }
-        .card8 {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 15%;
-            margin: 50px;
-            margin-left: 1030px;
-            margin-top: -380px;
-        }
-        .card8:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        .container8 {
-            padding: 2px 16px;
-        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <a href="#" class="logo">CompanyLogo</a>
+    <a href="{{url('index')}}" class="logo">The Game Museum</a>
     <div class="header-right">
         <a class="active" href="#">Home</a>
         <a href="{{url('console')}}">Consoles</a>
@@ -306,11 +210,10 @@
             @endauth
         </div>
     @endif
-
 </div>
-
     </div>
 </div>
+
 <div class="slideshow-container">
 
     <div class="mySlides fade">
@@ -344,90 +247,82 @@
     <h2>Popular items</h2>
 </div>
 
-<a href="#">
-    <div class="card">
-        <img src="{{asset('image/9200000073684225.jpg')}}" style="width:100%">
-        <div class="container">
-            <h4><b>Mario kart 8 deluxe</b></h4>
-            <p>€60</p>
-        </div>
-    </div>
-</a>
+<table id="myTable">
+<tr class="header">
+</tr>
+@foreach($game as $games)
+<tr>
+<td>
+{{$games->naam}}
+</td>
+<td>
+{{$games->releasedate}}
+</td>
+<td>
+{{$games->company}}
+</td>
+<td>
+$ {{$games->price}}
+</td>
+<td>
+<!-- ADD TO CART button code. -->
+<form action="https://www.e-junkie.com/ecom/fgb.php?c=cart&cl=1&ejc=2" target="ej_ejc" method="POST">
 
-<a href="#">
-    <div class="card2">
-        <img src="{{asset('image/8d19ec52dea34f25b1611db2f943ff0f_Medium.png')}}" style="width:100%">
-        <div class="container2">
-            <h4><b>Far cry 5</b></h4>
-            <p>€60</p>
-        </div>
-    </div>
-</a>
+<!-- paypal email(remove if not using PayPal) -->
+<input type="hidden" name="business" value="nordin-van-der-leije@live.nl"/>
 
-<a href="#">
-    <div class="card3">
-        <img src="{{asset('image/91cygXStWYL._SX342_.jpg')}}" style="width:100%">
-        <div class="container3">
-            <h4><b>Fifa 18</b></h4>
-            <p>€60</p>
-        </div>
-    </div>
-</a>
+<!-- site url -->
+<input type="hidden" name="site_url" value="http://localhost/TheGameMuseum/public/games"/>
 
-<a href="#">
-    <div class="card4">
-        <img src="{{asset('image/1473142.jpg')}}" style="width:100%">
-        <div class="container4">
-            <h4><b>Nintendo switch</b></h4>
-            <p>€300</p>
-        </div>
-    </div>
-</a>
+<!-- contact email (where we can notify of the updates) -->
+<input type="hidden" name="contact_email" value="nordin-van-der-leije@live.nl"/>
 
-<a href="#">
-    <div class="card5">
-        <img src="{{asset('image/9200000059380926.jpg')}}" style="width:100%">
-        <div class="container5">
-            <h4><b>God of war</b></h4>
-            <p>€60</p>
-        </div>
-    </div>
-</a>
+<!-- item name -->
+<input type="hidden" name="item_name" value="{{$games->naam}}"/>
 
-<a href="#">
-    <div class="card6">
-        <img src="{{asset('image/9200000088311623.jpg')}}" style="width:100%">
-        <div class="container6">
-            <h4><b>Dkc tropical freeze</b></h4>
-            <p>€60</p>
-        </div>
-    </div>
-</a>
+<!-- item number (should be different for each product)-->
+<input type="hidden" name="item_number" value="{{$games->id}}"/>
 
-<a href="#">
-    <div class="card7">
-        <img src="{{asset('image/ps4-pro-of-xbox-one-kopen-alle-voor-en-nadelen-op-een-rijtje-126389.jpg')}}" style="width:100%">
-        <div class="container7">
-            <h4><b>ps4</b></h4>
-            <p>€400</p>
-        </div>
-    </div>
-</a>
+<!-- item price -->
+<input type="hidden" name="amount" value="{{$games->price}}"/>
 
-<a href="#">
-    <div class="card8">
-        <img src="{{asset('image/variety-box.png')}}" style="width:100%">
-        <div class="container8">
-            <h4><b>Nintendo labo</b></h4>
-            <p>€80</p>
-        </div>
-    </div>
-</a>
+<!-- initial quantity -->
+<input type="hidden" name="quantity" value="1"/>
+
+<!-- shipping cost -->
+<input type="hidden" name="shipping" value="1">
+
+<!-- shipping cost of each additional unit -->
+<input type="hidden" name="shipping2" value="0.5">
+
+<!--handling cost -->
+<input type="hidden" name="handling" value="0.5">
+
+<!-- tax (flat amount, NOT percentage)-->
+<input type="hidden" name="tax" value="0.50"/>
+
+<!-- following options are applicable to whole cart-->
+
+<!-- you thank you page -->
+<input type="hidden" name="return_url" value="http://www.e-junkie.com/"/>
+
+<!-- any custom info you want to pass for the whole order -->
+<input type="hidden" name="custom" value="anything"/>
+
+<!-- currency (For PayPal: any currency that PayPal supports -->
+<input type="hidden" name="currency_code" value="USD"/>
+
+<input type="image" src="https://www.e-junkie.com/ej/ej_add_to_cart.gif" border="0" onClick="javascript:return EJEJC_lc(this.parentNode);">
+</form>
+</td>
+</tr>
+@endforeach
+</table>
+<br>
+<br>
 
 <div class="footer">
     <a href="{{url('contact')}}">Contact</a>
-    &nbsp
-    <a href="#">Help</a>
 </div>
 
 <script>

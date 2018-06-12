@@ -125,12 +125,12 @@
 </head>
 <body>
 <div class="header">
-    <a href="#" class="logo">CompanyLogo</a>
+    <a href="{{url('index')}}" class="logo">The Game Museum</a>
     <div class="header-right">
-        <a class="active" href="{{url('index')}}">Home</a>
+        <a href="{{url('index')}}">Home</a>
         <a href="{{url('console')}}">Consoles</a>
         <a href="{{url('games')}}">Games</a>
-        <a href="{{url('handheld')}}">Handheld</a>
+        <a  class="active" href="{{url('handheld')}}">Handheld</a>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -238,8 +238,6 @@
 </table>
 <div class="footer">
     <a href="{{url('contact')}}">Contact</a>
-    &nbsp
-    <a href="#">Help</a>
 </div>
 
 <script language="javascript" type="text/javascript">

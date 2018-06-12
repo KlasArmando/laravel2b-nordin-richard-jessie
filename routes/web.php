@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'TheGameMuseumController@index');
 Route::get('/index', 'TheGameMuseumController@index');
 Route::get('/contact', 'TheGameMuseumController@contact');
+Route::get('/help', 'TheGameMuseumController@help');
 
 Route::get('/console', 'ConsoleController@index');
 Route::get('/console/create', 'ConsoleController@create');
