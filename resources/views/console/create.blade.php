@@ -5,47 +5,42 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+        } );
+    </script>
 </head>
 <body>
-{!! Form::open(['url' => 'console/store', 'method' => 'post']) !!}
-{!! Form::label('naam') !!}
-{!! Form::text('naam') !!}
-<br>
-{!! Form::label('releasedate') !!}
-{!! Form::text('releasedate') !!}
-<br>
-{!! Form::label('company') !!}
-{!! Form::text('company') !!}
-<br>
-{!! Form::label('price') !!}
-{!! FORM::text('price') !!}
-<br>
-{!! Form::submit('click me') !!}
-{!! Form::close() !!}
 
-{{--<div class="container">--}}
-    {{--<div class="row">--}}
-        {{--<div class="col-md-10 col-md-offset-1">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading"> creating data</div>--}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading"> creating data</div>
+                <br>
+                @if ($message = \Session('message'))
+                    {{$message}}
+                @endif
+                <form method="POST" action="{{url('console/store/')}}">
+                    naam: <br>
+                    <input type="text" name="naam" required>*required<br>
+                    releasedate: <br>
+                    <input type="text" name="releasedate" id="datepicker" required>*required<br>
+                    company: <br>
+                    <input type="text" name="company" required>*required<br>
+                    price: <br>
+                    <input type="number" name="price" min="0" value="0" step=".01" required>*required<br>
+                    <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                    <input type="submit" name="create" value="create">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-                {{--<form method="POST" action="{{url('console/create/')}}">--}}
-                    {{--naam: <br>--}}
-                    {{--<input type="text" name="naam"><br>--}}
-                    {{--releasedate: <br>--}}
-                    {{--<input type="text" name="releasedate"><br>--}}
-                    {{--company: <br>--}}
-                    {{--<input type="text" name="company"><br>--}}
-                    {{--price: <br>--}}
-                    {{--<input type="text" name="price"><br>--}}
-                    {{--<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />--}}
-                    {{--<input type="submit" name="create" value="create">--}}
-                {{--</form>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
-{{--</body>--}}
 </body>
 </html>
