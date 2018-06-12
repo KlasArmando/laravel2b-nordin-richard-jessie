@@ -23,7 +23,7 @@
 
                 <form method="POST" action="{{url('games/update/' . $game->id)}}">
                     naam: <br>
-                    <input type="text" name="naam" value="{{$game->name}}" required>*required<br>
+                    <input type="text" name="naam" value="{{$game->naam}}" required>*required<br>
                     releasedate: <br>
                     <input type="text" name="releasedate" id="datepicker" value="{{$game->releasedate}}" required>*required<br>
                     company: <br>

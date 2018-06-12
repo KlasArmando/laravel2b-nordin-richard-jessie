@@ -21,7 +21,10 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading"> creating data</div>
-
+                <br>
+                @if ($message = \Session('message'))
+                    {{$message}}
+                @endif
                 <form method="POST" action="{{url('console/store/')}}">
                     naam: <br>
                     <input type="text" name="naam" required>*required<br>
