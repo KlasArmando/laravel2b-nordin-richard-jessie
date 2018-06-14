@@ -1,4 +1,4 @@
-<?php
+php artisan<?php
 
 namespace Illuminate\Database\Connectors;
 
