@@ -15,10 +15,10 @@ class CreateHandheldsTable extends Migration
     {
         Schema::create('handhelds', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('developers');
-            $table->text('discription');
-            $table->decimal('price',6,2);
+            $table->string('naam', 100)->unique();
+            $table->date('releasedate');
+            $table->string('company', 100);
+            $table->decimal('price');
             $table->timestamps();
         });
     }

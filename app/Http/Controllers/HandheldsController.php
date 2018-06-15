@@ -15,9 +15,9 @@ class HandheldsController extends Controller
      */
     public function index()
     {
-        $handhelds = Handhelds::all();
+        $handheld = Handhelds::all();
 
-        return view('handheld', compact('handhelds'));
+        return view('handheld.handheld', compact('handheld'));
     }
 
     /**
@@ -27,7 +27,7 @@ class HandheldsController extends Controller
      */
     public function create()
     {
-        return view('handheldcreate');
+        return view('handheld.handheldcreate');
     }
 
     /**
