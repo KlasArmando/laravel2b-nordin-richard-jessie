@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/index', 'HomeController@index')->name('home');
 Route::get('/', 'TheGameMuseumController@index');
 Route::get('/index', 'TheGameMuseumController@index');
 Route::get('/contact', 'TheGameMuseumController@contact');
@@ -39,4 +39,9 @@ Route::get('/games/edit/{games}', 'GameController@edit');
 Route::delete('/games/{games}', 'GameController@destroy');
 Route::post('/games/update/{games}', 'GameController@update');
 
-Route::get('/handheld', 'HandheldController@index');
+Route::get('/handheld', 'HandheldsController@index');
+Route::get('/handheld/create', 'HandheldsController@create');
+Route::post('/handheld/store', 'HandheldsController@store');
+Route::get('/handheld/{handhelds}', 'HandheldsController@edit');
+Route::delete('/handheld/{handhelds}', 'HandheldsController@destroy');
+Route::post('/handheld/update/{handhelds}', 'HandheldsController@update');
