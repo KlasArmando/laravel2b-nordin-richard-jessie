@@ -1,12 +1,10 @@
 <?php
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class handhelds extends model
+class Handhelds extends Model
 {
-    protected $fillable = [
-        'naam', 'releasedate', 'company', 'price'
-    ];
-
+    //
 }
