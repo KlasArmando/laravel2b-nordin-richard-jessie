@@ -17,7 +17,7 @@ class HandheldsController extends Controller
     {
         $handhelds = Handhelds::all();
 
-        return view('handheld', compact('handhelds'));
+        return view('handheld.handheld', compact('handhelds'));
     }
 
     /**
@@ -27,7 +27,7 @@ class HandheldsController extends Controller
      */
     public function create()
     {
-        return view('handheldcreate');
+        return view('handheld.handheldcreate');
     }
 
     /**
@@ -39,15 +39,15 @@ class HandheldsController extends Controller
     public function store(Request $request)
     {
         $validatedData = request()->validate([
-            'name' => 'required|unique:handheld',
-            'devolper' => 'required',
-            'discription' => 'required',
+            'naam' => 'required|unique:handhelds',
+            'releasedate' => 'required',
+            'company' => 'required',
             'price' => 'required',
         ]);
 
-        Handhelds::create($request->all());
+        handhelds::create($request->all());
 
-        return redirect('handheld');
+        return redirect('handhelds');
     }
 
     /**
@@ -58,7 +58,7 @@ class HandheldsController extends Controller
      */
     public function show(Handhelds $handhelds)
     {
-        return view('handheldshow', compact('handhelds'));
+        return view('handheld.handheldshow', compact('handhelds'));
     }
 
     /**
@@ -69,7 +69,7 @@ class HandheldsController extends Controller
      */
     public function edit(Handhelds $handhelds)
     {
-        return view('handheldedit', compact('handhelds'));
+        return view('handheld.handheldedit', compact('handhelds'));
     }
 
     /**
@@ -81,11 +81,12 @@ class HandheldsController extends Controller
      */
     public function update(Request $request, Handhelds $handhelds)
     {
-        $handhelds->name = request('name');
-        $handhelds->developer = request('developer');
-        $handhelds->discription = request('discription');
-        $handhelds->price = request('price');
+        $handhelds->naam = $request->naam;
+        $handhelds->releasedate = $request->releasedate;
+        $handhelds->company = $request->company;
+        $handhelds->price = $request->price;
         $handhelds->save();
+        return redirect('handhelds');
     }
 
     /**

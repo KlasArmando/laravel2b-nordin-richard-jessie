@@ -182,7 +182,7 @@
         <a class="active" href="#">Home</a>
         <a href="{{url('console')}}">Consoles</a>
         <a href="{{url('games')}}">Games</a>
-        <a href="{{url('handheld')}}">Handheld</a>
+        <a href="{{url('handhelds')}}">Handheld</a>
         @if(Auth::user()['role_id'] == 2)
             @endif
         <div class="flex-center position-ref full-height">

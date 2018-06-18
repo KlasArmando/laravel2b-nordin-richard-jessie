@@ -39,4 +39,10 @@ Route::get('/games/edit/{games}', 'GameController@edit');
 Route::delete('/games/{games}', 'GameController@destroy');
 Route::post('/games/update/{games}', 'GameController@update');
 
-Route::get('/handheld', 'HandheldController@index');
+Route::get('/handhelds', 'HandheldsController@index');
+Route::get('/handhelds/create', 'HandheldsController@create');
+Route::post('/handhelds', 'HandheldsController@store');
+Route::get('/handhelds/{handhelds}', 'HandheldsController@show');
+Route::get('/handhelds/edit/{handhelds}', 'HandheldsController@edit');
+Route::delete('/handhelds/{handhelds}', 'HandheldsController@destroy');
+Route::post('/handhelds/update/{handhelds}', 'HandheldsController@update');
