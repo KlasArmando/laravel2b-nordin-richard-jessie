@@ -130,7 +130,7 @@
         <a href="{{url('index')}}">Home</a>
         <a href="{{url('console')}}">Consoles</a>
         <a href="{{url('games')}}">Games</a>
-        <a  class="active" href="{{url('handheld')}}">Handheld</a>
+        <a  class="active" href="{{url('handhelds')}}">Handheld</a>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -160,6 +160,12 @@
     </div>
 </div>
 <br>
+@if(Auth::user()['role_id'] == 2)
+    <form action="{{url('handhelds/create')}}" method="GET">
+        <input type="submit" value="create">
+    </form>
+@endif
+<br>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Handhelds..">
 <table id="myTable">
     <tr class="header">
@@ -168,20 +174,34 @@
         <th>company</th>
         <th>price</th>
     </tr>
-    @foreach($handheld as $handhelds)
+    @foreach($handhelds as $handheld)
         <tr>
             <td>
-                {{$handhelds->naam}}
+                {{$handheld->naam}}
             </td>
             <td>
-                {{$handhelds->releasedate}}
+                {{$handheld->releasedate}}
             </td>
             <td>
-                {{$handhelds->company}}
+                {{$handheld->company}}
             </td>
             <td>
-                $ {{$handhelds->price}}
+                $ {{$handheld->price}}
             </td>
+            @if(Auth::user()['role_id'] == 2)
+                <td>
+                    <form action="{{url('handhelds/edit', $handheld->id)}}" method="GET">
+                        <input type="submit" value="edit">
+                    </form>
+                </td>
+                <td>
+                    <form action="{{url('/handhelds/' . $handheld->id)}}" method="POST">
+                        {{ csrf_field() }}
+                        @method('DELETE')
+                        <input type="submit" value="delete">
+                    </form>
+                </td>
+            @endif
             <td>
                 <!-- ADD TO CART button code. -->
                 <form action="https://www.e-junkie.com/ecom/fgb.php?c=cart&cl=1&ejc=2" target="ej_ejc" method="POST">
@@ -196,13 +216,13 @@
                     <input type="hidden" name="contact_email" value="your@email.address"/>
 
                     <!-- item name -->
-                    <input type="hidden" name="item_name" value="{{$handhelds->naam}}"/>
+                    <input type="hidden" name="item_name" value="{{$handheld->naam}}"/>
 
                     <!-- item number (should be different for each product)-->
-                    <input type="hidden" name="item_number" value="{{$handhelds->id}}"/>
+                    <input type="hidden" name="item_number" value="{{$handheld->id}}"/>
 
                     <!-- item price -->
-                    <input type="hidden" name="amount" value="{{$handhelds->price}}"/>
+                    <input type="hidden" name="amount" value="{{$handheld->price}}"/>
 
                     <!-- initial quantity -->
                     <input type="hidden" name="quantity" value="1"/>
