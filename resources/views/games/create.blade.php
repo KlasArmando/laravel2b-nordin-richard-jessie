@@ -13,13 +13,125 @@
             $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
         } );
     </script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+        } );
+    </script>
+    <style>
+        * {box-sizing: border-box;}
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+        .header {
+            overflow: hidden;
+            background-color: #f45c42;
+            padding: 20px 10px;
+        }
+        .header a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+        .header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .header a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .header a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+        .header-right {
+            float: Left;
+        }
+        @media screen and (max-width: 500px) {
+            .header a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .header-right {
+                float: none;
+            }
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f45c42;
+            color: black;
+            text-align: Left;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        a,
+        a:link,
+        a:visited,
+        a:active{
+            color: black;
+            text-align: Left;
+            text-decoration: none;
+            font-weight: normal;
+        }
+    </style>
 </head>
 <body>
+<div class="header">
+    <a href="{{url('index')}}" class="logo">The Game Museum</a>
+    <div class="header-right">
+        <a href="#">Home</a>
+        <a class="active" href="{{url('console')}}">Consoles</a>
+        <a href="{{url('games')}}">Games</a>
+        <a href="{{url('handheld')}}">Handheld</a>
+        @if(Auth::user()['role_id'] == 2)
+        @endif
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                </div>
+            @endif
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading"> creating data</div>
+                <br>
                 @if ($message = \Session('message'))
                     {{$message}}
                 @endif
@@ -39,5 +151,10 @@
         </div>
     </div>
 </div>
+
+<div class="footer">
+    <a href="{{url('contact')}}">Contact</a>
+</div>
+
 </body>
 </html>
