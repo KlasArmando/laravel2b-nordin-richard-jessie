@@ -18,7 +18,7 @@ class HandheldController extends Controller
     {
         $handhelds = Handhelds::all();
 
-        return view('handheld.handheld', compact('handhelds'));
+        return view('handheld.handhelds', compact('handhelds'));
     }
 
     /**
@@ -28,7 +28,7 @@ class HandheldController extends Controller
      */
     public function create()
     {
-        return view('handheld.handheldcreate');
+        return view('handheld.create');
     }
 
     /**
@@ -39,16 +39,25 @@ class HandheldController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = request()->validate([
-            'name' => 'required|unique:handheld',
-            'releasedate' => 'required',
-            'company' => 'required',
-            'price' => 'required',
-        ]);
+        try
+        {
+            $handheld = new handhelds();
+            $handheld->naam = input::get('naam');
+            $handheld->releasedate = input::get('releasedate');
+            $handheld->company = input::get('company');
+            $handheld->price = input::get('price');
+            $handheld->created_at = null;
+            $handheld->updated_at = null;
+            $handheld->save();
+        }catch (\Exception $e)
+        {
+            return Redirect::to('handhelds/create')
+                ->withInput()
+                ->with('message', 'You tried to insert a duplicated item, please try again');
 
-        Handhelds::create($request->all());
+        }
 
-        return redirect('handheld.handheld');
+        return redirect('handhelds');
     }
 
     /**
@@ -59,7 +68,8 @@ class HandheldController extends Controller
      */
     public function show(Handhelds $handhelds)
     {
-        return view('handheld.handheldshow', compact('handhelds'));
+        $handheld = handhelds::where('id', $handhelds)->first();
+        return view('handheld.show', compact('handheld'));
     }
 
     /**
@@ -68,9 +78,10 @@ class HandheldController extends Controller
      * @param  \App\Handhelds  $handhelds
      * @return \Illuminate\Http\Response
      */
-    public function edit(Handhelds $handhelds)
+    public function edit($handhelds)
     {
-        return view('handheld.handheldedit', compact('handhelds'));
+        $handheld = handhelds::where('id', $handhelds)->first();
+        return view('handheld.edit', compact('handheld'));
     }
 
     /**
@@ -97,9 +108,10 @@ class HandheldController extends Controller
      * @param  \App\Handhelds  $handhelds
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Handhelds $handhelds)
+    public function destroy($handhelds)
     {
-        $handhelds->delete();
-        return redirect('handheld.handheld');
+        $handheld = handhelds::find($handhelds);
+        $handheld->delete();
+        return redirect('/handhelds');
     }
 }
