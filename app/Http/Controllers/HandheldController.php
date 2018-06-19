@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Handhelds;
+use App\handhelds;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
-class HandheldsController extends Controller
+class HandheldController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,15 +40,15 @@ class HandheldsController extends Controller
     public function store(Request $request)
     {
         $validatedData = request()->validate([
-            'naam' => 'required|unique:handhelds',
+            'name' => 'required|unique:handheld',
             'releasedate' => 'required',
             'company' => 'required',
             'price' => 'required',
         ]);
 
-        handhelds::create($request->all());
+        Handhelds::create($request->all());
 
-        return redirect('handhelds');
+        return redirect('handheld.handheld');
     }
 
     /**
@@ -79,14 +80,15 @@ class HandheldsController extends Controller
      * @param  \App\Handhelds  $handhelds
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Handhelds $handhelds)
+    public function update($handhelds, Request $request)
     {
-        $handhelds->naam = $request->naam;
-        $handhelds->releasedate = $request->releasedate;
-        $handhelds->company = $request->company;
-        $handhelds->price = $request->price;
-        $handhelds->save();
-        return redirect('handhelds');
+        $handheld = handhelds::find($handhelds);
+        $handheld->naam = $request->naam;
+        $handheld->releasedate = $request->releasedate;
+        $handheld->company = $request->company;
+        $handheld->price = $request->price;
+        $handheld->save();
+        return redirect('/handhelds');
     }
 
     /**
@@ -98,5 +100,6 @@ class HandheldsController extends Controller
     public function destroy(Handhelds $handhelds)
     {
         $handhelds->delete();
+        return redirect('handheld.handheld');
     }
 }
