@@ -46,3 +46,11 @@ Route::get('/handhelds/{handhelds}', 'HandheldsController@show');
 Route::get('/handhelds/edit/{handhelds}', 'HandheldsController@edit');
 Route::delete('/handhelds/{handhelds}', 'HandheldsController@destroy');
 Route::post('/handhelds/update/{handhelds}', 'HandheldsController@update');
+
+Route::get('/company', 'CompanyController@index');
+Route::get('/company/create', 'CompanyController@create');
+Route::post('/company', 'CompanyController@store');
+Route::get('/company/{company}', 'CompanyController@show');
+Route::get('/company/edit/{company}', 'CompanyController@edit');
+Route::delete('/company/{company}', 'CompanyController@destroy');
+Route::post('/company/update/{company}', 'CompanyController@update');
