@@ -169,26 +169,26 @@
     </form>
 @endif
 <br>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Handhelds..">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Companies..">
 <table id="myTable">
     <tr class="header">
         <th>Name</th>
 
     </tr>
-    @foreach($company as $companies)
+    @foreach($companys as $company)
         <tr>
             <td>
-                {{$companies->naam}}
+                {{$company->name}}
             </td>
 
             @if(Auth::user()['role_id'] == 2)
                 <td>
-                    <form action="{{url('company/edit', $companies->id)}}" method="GET">
+                    <form action="{{url('company/edit', $company ->id)}}" method="GET">
                         <input type="submit" value="edit">
                     </form>
                 </td>
                 <td>
-                    <form action="{{url('/company/' . $companies->id)}}" method="POST">
+                    <form action="{{url('/company/' . $company->id)}}" method="POST">
                         {{ csrf_field() }}
                         @method('DELETE')
                         <input type="submit" value="delete">
