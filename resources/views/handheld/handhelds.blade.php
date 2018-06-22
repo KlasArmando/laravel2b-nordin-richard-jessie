@@ -130,7 +130,7 @@
         <a href="{{url('index')}}">Home</a>
         <a href="{{url('console')}}">Consoles</a>
         <a href="{{url('games')}}">Games</a>
-        <a  class="active" href="{{url('handheld')}}">Handheld</a>
+        <a  class="active" href="{{url('handhelds')}}">Handheld</a>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
