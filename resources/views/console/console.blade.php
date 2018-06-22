@@ -186,7 +186,9 @@
                 {{$result->releasedate}}
             </td>
             <td>
-                {{$result->company}}
+                @foreach($companies as $company)
+                    {{$company->name}}
+                    @endforeach
             </td>
             <td>
                 $ {{$result->price}}

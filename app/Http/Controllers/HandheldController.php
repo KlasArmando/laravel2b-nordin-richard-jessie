@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\handhelds;
+use App\Handheld;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -16,7 +16,7 @@ class HandheldController extends Controller
      */
     public function index()
     {
-        $handhelds = Handhelds::all();
+        $handhelds = Handheld::all();
 
         return view('handheld.handhelds', compact('handhelds'));
     }
@@ -41,7 +41,7 @@ class HandheldController extends Controller
     {
         try
         {
-            $handheld = new handhelds();
+            $handheld = new Handheld();
             $handheld->naam = input::get('naam');
             $handheld->releasedate = input::get('releasedate');
             $handheld->company = input::get('company');
@@ -66,9 +66,9 @@ class HandheldController extends Controller
      * @param  \App\Handhelds  $handhelds
      * @return \Illuminate\Http\Response
      */
-    public function show(Handhelds $handhelds)
+    public function show(Handheld $handhelds)
     {
-        $handheld = handhelds::where('id', $handhelds)->first();
+        $handheld = Handheld::where('id', $handhelds)->first();
         return view('handheld.show', compact('handheld'));
     }
 
@@ -80,7 +80,7 @@ class HandheldController extends Controller
      */
     public function edit($handhelds)
     {
-        $handheld = handhelds::where('id', $handhelds)->first();
+        $handheld = Handheld::where('id', $handhelds)->first();
         return view('handheld.edit', compact('handheld'));
     }
 
@@ -93,7 +93,7 @@ class HandheldController extends Controller
      */
     public function update($handhelds, Request $request)
     {
-        $handheld = handhelds::find($handhelds);
+        $handheld = Handheld::find($handhelds);
         $handheld->naam = $request->naam;
         $handheld->releasedate = $request->releasedate;
         $handheld->company = $request->company;
@@ -110,7 +110,7 @@ class HandheldController extends Controller
      */
     public function destroy($handhelds)
     {
-        $handheld = handhelds::find($handhelds);
+        $handheld = Handheld::find($handhelds);
         $handheld->delete();
         return redirect('/handhelds');
     }

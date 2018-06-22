@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class CompanyController extends Controller
 {
@@ -15,9 +16,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $company = Company::all();
+        $companys = Company::all();
 
-        return view('company.company', compact('company'));
+        return view('company.company', compact('companys'));
     }
 
     /**
@@ -39,7 +40,7 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $validatedData = request()->validate([
-            'naam' => 'required|unique:companies',
+            'name' => 'required|unique:companies',
         ]);
 
         company::create($request->all());
@@ -78,7 +79,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        $company->naam = $request->naam;
+        $company->name = $request->name;
 
         $company->save();
         return redirect('company');
@@ -90,9 +91,10 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy($company)
     {
-        $company->delete();
-        
+        $companies = Company::find($company);
+        $companies->delete();
+        return redirect('/company');
     }
 }
