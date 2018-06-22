@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\games;
+use App\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ class GameController extends Controller
 {
     public function index()
     {
-        $game = games::all();
+        $game = Game::all();
         return view('games.games', compact('game'));
     }
 
@@ -24,7 +24,7 @@ class GameController extends Controller
     {
         try
         {
-            $game = new games();
+            $game = new Game();
             $game->naam = input::get('naam');
             $game->releasedate = input::get('releasedate');
             $game->company = input::get('company');
@@ -42,21 +42,21 @@ class GameController extends Controller
 
         return redirect('games');
     }
-    public function show(Games $games)
+    public function show(Game $games)
     {
-        $game = games::where('id', $games)->first();
+        $game = Game::where('id', $games)->first();
         return view('games.show', compact('game'));
     }
 
     public function edit($games)
     {
-        $game = games::where('id', $games)->first();
+        $game = Game::where('id', $games)->first();
         return view('games.edit', compact('game'));
     }
 
     public function update($games, Request $request)
     {
-        $game = games::find($games);
+        $game = Game::find($games);
         $game->naam = $request->naam;
         $game->releasedate = $request->releasedate;
         $game->company = $request->company;
@@ -67,7 +67,7 @@ class GameController extends Controller
 
     public function destroy($games)
     {
-        $game = games::find($games);
+        $game = Game::find($games);
         $game->delete();
         return redirect('/games');
     }

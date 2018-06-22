@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\consoles;
-use App\handhelds;
-use App\games;
+use App\Console;
+use App\Handheld;
+use App\Game;
 use Illuminate\Http\Request;
 
 class TheGameMuseumController extends Controller
@@ -16,9 +16,9 @@ class TheGameMuseumController extends Controller
      */
     public function index()
     {
-        $game = games::all();
-        $console = consoles::all();
-        $handheld = handhelds::all();
+        $game = Game::all();
+        $console = Console::all();
+        $handheld = Handheld::all();
         return view('index', compact('game', 'console', 'handheld'));
     }
 

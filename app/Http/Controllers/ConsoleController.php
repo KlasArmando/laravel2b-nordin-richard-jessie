@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use App\consoles;
+use App\Console;
+use App\Company;
 use function Sodium\compare;
 
 class ConsoleController extends Controller
@@ -17,8 +18,9 @@ class ConsoleController extends Controller
      */
     public function index()
     {
-        $results = consoles::all();
-        return view('console.console', compact('results'));
+        $results = Console::all();
+        $companies = Company::all();
+        return view('console.console', compact('results', 'companies'));
     }
 
     /**
@@ -41,7 +43,7 @@ class ConsoleController extends Controller
     {
         try
         {
-            $consoles = new consoles();
+            $consoles = new Console();
             $consoles->naam = input::get('naam');
             $consoles->releasedate = input::get('releasedate');
             $consoles->company = input::get('company');
@@ -66,9 +68,9 @@ class ConsoleController extends Controller
      * @param  \App\TheGameMuseum  $console)
      * @return \Illuminate\Http\Response
      */
-    public function show(Consoles $console)
+    public function show(Console $console)
     {
-        $consoles = consoles::where('id', $console)->first();
+        $consoles = Console::where('id', $console)->first();
         return view('console.show', compact('consoles'));
     }
 
@@ -80,7 +82,7 @@ class ConsoleController extends Controller
      */
     public function edit($console)
     {
-        $consoles = consoles::where('id', $console)->first();
+        $consoles = Console::where('id', $console)->first();
         return view('console.edit', compact('consoles'));
     }
 
@@ -93,7 +95,7 @@ class ConsoleController extends Controller
      */
     public function update($console, Request $request)
     {
-        $consoles = consoles::find($console);
+        $consoles = Console::find($console);
         $consoles->naam = $request->naam;
         $consoles->releasedate = $request->releasedate;
         $consoles->company = $request->company;
@@ -110,7 +112,7 @@ class ConsoleController extends Controller
      */
     public function destroy($console)
     {
-        $consoles = consoles::find($console);
+        $consoles = Console::find($console);
         $consoles->delete();
         return redirect('/console');
     }
