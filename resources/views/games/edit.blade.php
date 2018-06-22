@@ -116,6 +116,9 @@
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
+                        @if(Auth::user()['role_id'] == 2)
+                            <a href="{{url('company')}}">Company</a>
+                        @endif
                 </div>
             @endif
         </div>
