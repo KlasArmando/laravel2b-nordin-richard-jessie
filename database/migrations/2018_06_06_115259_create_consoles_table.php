@@ -17,9 +17,9 @@ class CreateConsolesTable extends Migration
             $table->increments('id');
             $table->string('naam', 100)->unique();
             $table->date('releasedate');
-            $table->string('company', 100);
             $table->decimal('price');
             $table->timestamps();
+            $table->foreign('company_id')->nullable();
         });
     }
 
