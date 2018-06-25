@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Console extends model
 {
     protected $fillable = [
-        'naam', 'releasedate', 'company', 'price'
+        'naam', 'releasedate', 'price', 'name_id'
     ];
 }

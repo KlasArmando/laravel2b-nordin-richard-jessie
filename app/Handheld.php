@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Handheld extends Model
 {
     protected $fillable = [
-        'naam', 'releasedate', 'company', 'price'
+        'name', 'releasedate', 'price', 'name_id'
     ];
 }

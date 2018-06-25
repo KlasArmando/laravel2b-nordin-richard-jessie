@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -13,8 +12,7 @@ class GameController extends Controller
     public function index()
     {
         $game = Game::all();
-        $companies = Company::all();
-        return view('games.games', compact('game', 'companies'));
+        return view('games.games', compact('game'));
     }
 
     public function create()
@@ -29,8 +27,8 @@ class GameController extends Controller
             $game = new Game();
             $game->naam = input::get('naam');
             $game->releasedate = input::get('releasedate');
-            $game->company = input::get('company');
             $game->price = input::get('price');
+            $game->name_id = 1;
             $game->created_at = null;
             $game->updated_at = null;
             $game->save();
@@ -61,8 +59,8 @@ class GameController extends Controller
         $game = Game::find($games);
         $game->naam = $request->naam;
         $game->releasedate = $request->releasedate;
-        $game->company = $request->company;
         $game->price = $request->price;
+        $game->name_id = 1;
         $game->save();
         return redirect('/games');
     }

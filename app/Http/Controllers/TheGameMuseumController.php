@@ -18,8 +18,8 @@ class TheGameMuseumController extends Controller
     {
         $game = Game::all();
         $console = Console::all();
-        $handheld = Handheld::all();
-        return view('index', compact('game', 'console', 'handheld'));
+        $handhelds = Handheld::all();
+        return view('index', compact('game', 'console', 'handhelds'));
     }
 
 
