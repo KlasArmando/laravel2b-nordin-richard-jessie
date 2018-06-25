@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Handheld;
-use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -18,8 +17,7 @@ class HandheldController extends Controller
     public function index()
     {
         $handhelds = Handheld::all();
-        $companies = Company::all();
-        return view('handheld.handhelds', compact('handhelds', 'companies'));
+        return view('handheld.handhelds', compact('handhelds'));
     }
 
     /**
@@ -43,10 +41,10 @@ class HandheldController extends Controller
         try
         {
             $handheld = new Handheld();
-            $handheld->naam = input::get('naam');
+            $handheld->name = input::get('name');
             $handheld->releasedate = input::get('releasedate');
-            $handheld->company = input::get('company');
             $handheld->price = input::get('price');
+            $handheld->name_id = 1;
             $handheld->created_at = null;
             $handheld->updated_at = null;
             $handheld->save();
@@ -95,10 +93,10 @@ class HandheldController extends Controller
     public function update($handhelds, Request $request)
     {
         $handheld = Handheld::find($handhelds);
-        $handheld->naam = $request->naam;
+        $handheld->name = $request->name;
         $handheld->releasedate = $request->releasedate;
-        $handheld->company = $request->company;
         $handheld->price = $request->price;
+        $handheld->name_id = 1;
         $handheld->save();
         return redirect('/handhelds');
     }

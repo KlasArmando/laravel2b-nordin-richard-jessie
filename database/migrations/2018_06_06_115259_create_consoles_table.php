@@ -19,7 +19,7 @@ class CreateConsolesTable extends Migration
             $table->date('releasedate');
             $table->decimal('price');
             $table->timestamps();
-            $table->foreign('company_id')->nullable();
+            $table->foreign('name_id')->nullable();
         });
     }
 

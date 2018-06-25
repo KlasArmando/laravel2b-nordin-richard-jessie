@@ -136,8 +136,6 @@
                     <input type="text" name="naam" value="{{$consoles->naam}}" required>*required<br>
                     releasedate: <br>
                     <input type="text" name="releasedate" id="datepicker" value="{{$consoles->releasedate}}" required>*required<br>
-                    company: <br>
-                    <input type="text" name="company" value="{{$consoles->company}}" required>*required<br>
                     price: <br>
                     <input type="number" name="price" min="0" value="{{$consoles->price}}" step=".01" required>*required<br>
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />

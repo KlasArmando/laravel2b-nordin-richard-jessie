@@ -185,9 +185,7 @@
                 {{$games->releasedate}}
             </td>
             <td>
-                @foreach($companies as $company)
-                    {{$company->name}}
-                @endforeach
+                {{\App\Company::where('id', $games->name_id)->first()->name}}
             </td>
             <td>
                 $ {{$games->price}}

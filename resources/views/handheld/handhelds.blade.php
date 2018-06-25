@@ -172,7 +172,7 @@
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Handhelds..">
 <table id="myTable">
     <tr class="header">
-        <th>Game</th>
+        <th>Handheld</th>
         <th>release date</th>
         <th>company</th>
         <th>price</th>
@@ -180,15 +180,13 @@
     @foreach($handhelds as $handheld)
         <tr>
             <td>
-                {{$handheld->naam}}
+                {{$handheld->name}}
             </td>
             <td>
                 {{$handheld->releasedate}}
             </td>
             <td>
-                @foreach($companies as $company)
-                    {{$company->name}}
-                @endforeach
+                {{\App\Company::where('id', $handheld->name_id)->first()->name}}
             </td>
             <td>
                 $ {{$handheld->price}}

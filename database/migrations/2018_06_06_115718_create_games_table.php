@@ -19,8 +19,7 @@ class CreateGamesTable extends Migration
             $table->date('releasedate');
             $table->decimal('price');
             $table->timestamps();
-            $table->unsignedInteger('Company_id');
-            $table->foreign('Company_id')->references('id')->nullable();
+            $table->foreign('name_id')->nullable();
         });
     }
 
