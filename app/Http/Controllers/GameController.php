@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -12,7 +13,8 @@ class GameController extends Controller
     public function index()
     {
         $game = Game::all();
-        return view('games.games', compact('game'));
+        $companies = Company::all();
+        return view('games.games', compact('game', 'companies'));
     }
 
     public function create()

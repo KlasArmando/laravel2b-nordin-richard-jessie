@@ -186,7 +186,9 @@
                 {{$handheld->releasedate}}
             </td>
             <td>
-                {{$handheld->company}}
+                @foreach($companies as $company)
+                    {{$company->name}}
+                @endforeach
             </td>
             <td>
                 $ {{$handheld->price}}

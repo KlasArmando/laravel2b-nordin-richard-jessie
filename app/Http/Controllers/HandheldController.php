@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Handheld;
+use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -17,8 +18,8 @@ class HandheldController extends Controller
     public function index()
     {
         $handhelds = Handheld::all();
-
-        return view('handheld.handhelds', compact('handhelds'));
+        $companies = Company::all();
+        return view('handheld.handhelds', compact('handhelds', 'companies'));
     }
 
     /**

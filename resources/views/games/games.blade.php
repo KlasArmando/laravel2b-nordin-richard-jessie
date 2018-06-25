@@ -185,7 +185,9 @@
                 {{$games->releasedate}}
             </td>
             <td>
-                {{$games->company}}
+                @foreach($companies as $company)
+                    {{$company->name}}
+                @endforeach
             </td>
             <td>
                 $ {{$games->price}}
