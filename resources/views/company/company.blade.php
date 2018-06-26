@@ -150,7 +150,7 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             @if(Auth::user()['role_id'] == 2)
-                                <a href="{{url('company')}}">Company</a>
+                                <a class="active" href="{{url('company')}}">Company</a>
                             @endif
                     </div>
                     @else
