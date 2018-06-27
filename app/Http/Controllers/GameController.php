@@ -27,8 +27,8 @@ class GameController extends Controller
             $game = new Game();
             $game->naam = input::get('naam');
             $game->releasedate = input::get('releasedate');
-            $game->company = input::get('company');
             $game->price = input::get('price');
+            $game->name_id = 1;
             $game->created_at = null;
             $game->updated_at = null;
             $game->save();
@@ -59,8 +59,8 @@ class GameController extends Controller
         $game = Game::find($games);
         $game->naam = $request->naam;
         $game->releasedate = $request->releasedate;
-        $game->company = $request->company;
         $game->price = $request->price;
+        $game->name_id = 1;
         $game->save();
         return redirect('/games');
     }

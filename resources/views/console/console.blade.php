@@ -24,9 +24,7 @@
                 {{$result->releasedate}}
             </td>
             <td>
-                @foreach($companies as $company)
-                    {{$company->name}}
-                    @endforeach
+                {{\App\Company::where('id', $result->name_id)->first()->name}}
             </td>
             <td>
                 $ {{$result->price}}

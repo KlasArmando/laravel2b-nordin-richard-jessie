@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\Console;
-use App\Company;
 use function Sodium\compare;
 
 class ConsoleController extends Controller
@@ -19,8 +18,7 @@ class ConsoleController extends Controller
     public function index()
     {
         $results = Console::all();
-        $companies = Company::all();
-        return view('console.console', compact('results', 'companies'));
+        return view('console.console', compact('results'));
     }
 
     /**
@@ -46,8 +44,8 @@ class ConsoleController extends Controller
             $consoles = new Console();
             $consoles->naam = input::get('naam');
             $consoles->releasedate = input::get('releasedate');
-            $consoles->company = input::get('company');
             $consoles->price = input::get('price');
+            $consoles->name_id = 1;
             $consoles->created_at = null;
             $consoles->updated_at = null;
             $consoles->save();
@@ -98,8 +96,8 @@ class ConsoleController extends Controller
         $consoles = Console::find($console);
         $consoles->naam = $request->naam;
         $consoles->releasedate = $request->releasedate;
-        $consoles->company = $request->company;
         $consoles->price = $request->price;
+        $consoles->name_id = 1;
         $consoles->save();
         return redirect('/console');
     }
