@@ -115,6 +115,9 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
+                                @if(Auth::user()['role_id'] == 2)
+                                    <a href="{{url('company')}}">Company</a>
+                            @endif
                         </div>
                     @else
                         <a href="{{ route('login') }}">Login</a>
@@ -140,8 +143,6 @@
                     <input type="text" name="naam" required>*required<br>
                     releasedate: <br>
                     <input type="text" name="releasedate" id="datepicker" required>*required<br>
-                    company: <br>
-                    <input type="text" name="company" required>*required<br>
                     price: <br>
                     <input type="number" name="price" min="0" value="0" step=".01" required>*required<br>
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />

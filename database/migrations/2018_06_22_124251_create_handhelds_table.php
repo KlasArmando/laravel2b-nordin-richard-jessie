@@ -19,7 +19,8 @@ class CreateHandheldsTable extends Migration
             $table->date('releasedate');
             $table->decimal('price');
             $table->timestamps();
-            $table->foreign('company_id')->nullable();
+            $table->unsignedInteger('name_id');
+            $table->foreign('name_id')->references('id')->on('companys');
         });
     }
 

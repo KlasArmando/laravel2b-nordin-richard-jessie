@@ -88,8 +88,8 @@
     <a href="{{url('index')}}" class="logo">The Game Museum</a>
     <div class="header-right">
         <a href="#">Home</a>
-        <a class="active" href="{{url('console')}}">Consoles</a>
-        <a href="{{url('games')}}">Games</a>
+        <a href="{{url('console')}}">Consoles</a>
+        <a class="active" href="{{url('games')}}">Games</a>
         <a href="{{url('handheld')}}">Handheld</a>
         @if(Auth::user()['role_id'] == 2)
         @endif
@@ -116,6 +116,9 @@
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
+                        @if(Auth::user()['role_id'] == 2)
+                            <a href="{{url('company')}}">Company</a>
+                        @endif
                 </div>
             @endif
         </div>
@@ -134,8 +137,6 @@
                     <input type="text" name="naam" value="{{$game->naam}}" required>*required<br>
                     releasedate: <br>
                     <input type="text" name="releasedate" id="datepicker" value="{{$game->releasedate}}" required>*required<br>
-                    company: <br>
-                    <input type="text" name="company" value="{{$game->company}}" required>*required<br>
                     price: <br>
                     <input type="number" name="price" min="0" value="{{$game->price}}" step=".01" required>*required<br>
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />

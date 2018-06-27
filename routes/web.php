@@ -41,7 +41,7 @@ Route::post('/games/update/{games}', 'GameController@update');
 
 Route::get('/handhelds', 'HandheldController@index');
 Route::get('/handhelds/create', 'HandheldController@create');
-Route::post('/handhelds', 'HandheldController@store');
+Route::post('/handhelds/store', 'HandheldController@store');
 Route::get('/handhelds/{handhelds}', 'HandheldController@show');
 Route::get('/handhelds/edit/{handhelds}', 'HandheldController@edit');
 Route::delete('/handhelds/{handhelds}', 'HandheldController@destroy');

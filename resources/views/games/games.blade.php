@@ -24,7 +24,7 @@
                 {{$games->releasedate}}
             </td>
             <td>
-                {{$games->company}}
+                {{\App\Company::where('id', $games->name_id)->first()->name}}
             </td>
             <td>
                 $ {{$games->price}}
